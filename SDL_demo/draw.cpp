@@ -4,7 +4,10 @@
 #define RGB32(r, g, b) static_cast<uint32_t>((((static_cast<uint32_t>(b) << 8) | g) << 8) | r)
 #define PI 3.14159265
 #include "iostream"
+#include <vector>
 using namespace std;
+
+
 
 void put_pixel32(SDL_Surface *surface, int x, int y, Uint32 pixel)
 {
@@ -68,30 +71,20 @@ double newY(double y, double y1, double m)
 
 void draw(SDL_Surface *s, double step)
 {
-	//int a = 30;
-	//int x0 = 20;
-
-	//for (int x = 1; x <= (a - 1) * step; x+= step){
-	//	put_pixel32(s, x + x0, getY(x, a * step) + a * 4, RGB32(0, 255, 0));
-	//	put_pixel32(s, x + x0, 0 + a * 4, RGB32(100, 100, 100));
-	//	put_pixel32(s, x + x0, -getY(x, a * step) + a * 4, RGB32(0, 255, 0));
-	//}
-	//for(int y = 1; y < SCREEN_HEIGHT; y++){
-	//	put_pixel32(s, 1 + x0, y, RGB32(100, 100, 100));
-	//}
-
+	vector<int[2]> shape;
+	vector <int[2]> newShape;
 	int x1 = 10;
 	int y1 = 10;
 	int x2 = 300;
 	int y2 = 300;
 	//double angle = 15.0;
-	double m = 0.1;
+	double m = step;
 	int sqrCount = 5;
 
 	drawRectangle(s, x1, y1, x2, y2, RGB(100, 98, 21));
 	//double k = tan(angle * PI / 180.0);
 
-	drawLine(s, 160, 160, newX(10, 300, 0.1), newY(10, 10, 0.1), RGB(255, 255, 255));
+	//drawLine(s, 160, 160, newX(10, 300, 0.1), newY(10, 10, 0.1), RGB(255, 255, 255));
 
 	int X1 = newX(x1, x2, m);
 	int Y1 = newY(y1, y1, m);

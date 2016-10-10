@@ -78,7 +78,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			bool quit = false;
 			SDL_Event e;
-			double step = 1;
+			double step = 0.01;
 			while (!quit)
 			{
 				while (SDL_PollEvent(&e) != 0)
@@ -93,11 +93,11 @@ int _tmain(int argc, _TCHAR* argv[])
 						{
 						case SDL_SCANCODE_KP_PLUS:
 							printf("SDL_SCANCODE_KP_PLUS have been presssed\n %i", step);
-							step += 0.1;
+							step += 0.01;
 							break;
 						case SDL_SCANCODE_KP_MINUS:
 							printf("SDL_SCANCODE_KP_MINUS have been presssed\n %i", step);
-							step -= 0.1;
+							step -= 0.01;
 							break;
 						default:
 							break;
@@ -105,7 +105,12 @@ int _tmain(int argc, _TCHAR* argv[])
 					}
 				}
 				SDL_RenderClear(gRenderer);
-
+				if (step <= 0.01) {
+					step = 0.01;
+				}
+				if (step >= 0.15) {
+					step = 0.15;
+				}
 				SDL_FillRect(loadedSurface, NULL, 0x00000000);
 				draw(loadedSurface, step);
 
